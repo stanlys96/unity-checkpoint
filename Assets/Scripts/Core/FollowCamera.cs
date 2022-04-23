@@ -33,7 +33,7 @@ namespace RPG.Core
             cam.transform.position = target.position;
             cam.transform.Rotate(new Vector3(1, 0, 0), direction.y * 180);
             cam.transform.Rotate(new Vector3(0, 1, 0), -direction.x * 180, Space.World);
-            cam.transform.Translate(0, 0, cameraOffset.z);
+            cam.transform.Translate(0, 0, -9);
 
             previousPosition = cam.ScreenToViewportPoint(Input.mousePosition);
             }

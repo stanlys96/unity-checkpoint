@@ -37,6 +37,7 @@ namespace RPG.Control {
         // Update is called once per frame
         void Update()
         {
+            if (GetComponent<Health>().IsDead()) return;
             timeSinceLastAtWaypoint += Time.deltaTime;
             timeSinceLastSawPlayer += Time.deltaTime;
             if (Vector3.Distance(transform.position, player.transform.position) < chaseRadius) {

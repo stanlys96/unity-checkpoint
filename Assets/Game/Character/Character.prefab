@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2325333640453330082}
   - component: {fileID: 4201482863721565103}
   - component: {fileID: 21600530570017403}
+  - component: {fileID: 7786417106157213854}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -91,6 +92,7 @@ MonoBehaviour:
   attackRange: 1.5
   timeBetweenAttacks: 1
   weaponDamage: 5
+  moveSpeed: 1
 --- !u!114 &4201482863721565103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,3 +118,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPoints: 100
+--- !u!114 &7786417106157213854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6153034696407991086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ea9374b509b70f4bba37e4a2ca8cf00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueIdentifier: 
