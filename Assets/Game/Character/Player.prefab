@@ -2243,6 +2243,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2325333640453330082, guid: e360e20d2ee958748ba2c6cd4a68fbc7, type: 3}
+      propertyPath: defaultWeapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 61f24134ba23d5748967789466e32d9c, type: 2}
+    - target: {fileID: 2325333640453330082, guid: e360e20d2ee958748ba2c6cd4a68fbc7, type: 3}
+      propertyPath: handTransform
+      value: 
+      objectReference: {fileID: 281506243319897911}
+    - target: {fileID: 2325333640453330082, guid: e360e20d2ee958748ba2c6cd4a68fbc7, type: 3}
+      propertyPath: leftHandTransform
+      value: 
+      objectReference: {fileID: 3766077635740115789}
+    - target: {fileID: 2325333640453330082, guid: e360e20d2ee958748ba2c6cd4a68fbc7, type: 3}
+      propertyPath: rightHandTransform
+      value: 
+      objectReference: {fileID: 281506243319897911}
     - target: {fileID: 6153034696407991086, guid: e360e20d2ee958748ba2c6cd4a68fbc7, type: 3}
       propertyPath: m_Name
       value: Player

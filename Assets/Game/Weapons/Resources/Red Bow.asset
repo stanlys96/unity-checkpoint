@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1f8a83fed7f8f647aa533f6e19649ca, type: 3}
+  m_Name: Red Bow
+  m_EditorClassIdentifier: 
+  attackRange: 10
+  weaponDamage: 5
+  weaponPrefab: {fileID: 1135655217174185682, guid: 11f6489074c29504e92742d35786936e, type: 3}
+  weaponOverride: {fileID: 22100000, guid: 48c8d6f3bc07149449223d03fc9a2fe6, type: 2}
+  isRightHanded: 0
+  projectile: {fileID: 7434003570702858357, guid: 817a3252bc6220c439bd08816359743b, type: 3}
