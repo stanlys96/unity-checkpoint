@@ -4,6 +4,7 @@ using UnityEngine;
 using RPG.Movement;
 using RPG.Combat;
 using RPG.Core;
+using RPG.Attributes;
 
 namespace RPG.Control {
     public class PlayerController : MonoBehaviour
@@ -46,7 +47,7 @@ namespace RPG.Control {
                 if (hit.transform.GetComponent<CombatTarget>() == null) continue;
                 if (hit.transform.GetComponent<Health>().IsDead()) continue;
                 if (Input.GetMouseButton(1)) {
-                    fighter.Attack(hit.transform.gameObject);
+                    fighter.Attack(hit.transform.GetComponent<Health>());
                 }
                 return true;
             }

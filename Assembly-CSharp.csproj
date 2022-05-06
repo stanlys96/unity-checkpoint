@@ -39,6 +39,7 @@
      <Compile Include="Assets\Scripts\Control\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Core\ActionScheduler.cs" />
      <Compile Include="Assets\Scripts\Core\PersistentObjectSpawner.cs" />
+     <Compile Include="Assets\Scripts\Combat\WeaponProjectile.cs" />
      <Compile Include="Assets\Scripts\Combat\CombatTarget.cs" />
      <Compile Include="Assets\Scripts\Combat\Fighter.cs" />
      <Compile Include="Assets\Scripts\Saving\SaveableEntity.cs" />
@@ -51,13 +52,12 @@
      <Compile Include="Assets\Scripts\Saving\SavingSystem.cs" />
      <Compile Include="Assets\Scripts\Core\DestroyAfterEffect.cs" />
      <Compile Include="Assets\Scripts\SceneManagement\Portal.cs" />
-     <Compile Include="Assets\Scripts\Core\Health.cs" />
+     <Compile Include="Assets\Scripts\Attributes\Health.cs" />
      <Compile Include="Assets\Scripts\SceneManagement\Fader.cs" />
      <Compile Include="Assets\Scripts\Combat\Weapon.cs" />
+     <Compile Include="Assets\Scripts\Core\WeaponPickup.cs" />
      <Compile Include="Assets\Scripts\Core\IAction.cs" />
      <Compile Include="Assets\Scripts\Movement\Mover.cs" />
-     <Compile Include="Assets\Scripts\Core\WeaponPickup.cs" />
-     <Compile Include="Assets\Scripts\Combat\WeaponProjectile.cs" />
      <None Include="Assets\Asset Packs\Synty - Polygon Student Sample\README - Usage Rights for these assets.txt" />
      <None Include="Assets\SimpleFX\Materials\UnlitVertexColour_Alpha.shader" />
      <None Include="Assets\Asset Packs\Animations by Explosive\README - Usage Rights for these assets 1.txt" />

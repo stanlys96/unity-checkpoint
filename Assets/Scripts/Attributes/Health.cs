@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using RPG.Saving;
 
-namespace RPG.Core {
+namespace RPG.Attributes {
     public class Health : MonoBehaviour, ISaveable
     {
         [SerializeField] float healthPoints = 100f;

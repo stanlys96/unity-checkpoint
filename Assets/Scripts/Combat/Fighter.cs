@@ -4,6 +4,7 @@ using UnityEngine;
 using RPG.Movement;
 using RPG.Core;
 using RPG.Saving;
+using RPG.Attributes;
 
 namespace RPG.Combat {
     public class Fighter : MonoBehaviour, IAction, ISaveable
@@ -14,7 +15,7 @@ namespace RPG.Combat {
         [SerializeField] Transform leftHandTransform = null;
         [SerializeField] Weapon defaultWeapon = null;
 
-        GameObject target;
+        Health target;
         Mover mover;
         Animator animator;
         ActionScheduler actionScheduler;
@@ -55,7 +56,7 @@ namespace RPG.Combat {
             }
         }
 
-        public void Attack(GameObject combatTarget) {
+        public void Attack(Health combatTarget) {
             actionScheduler.StartAction(this);
             target = combatTarget;
         }

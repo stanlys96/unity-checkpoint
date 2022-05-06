@@ -4,6 +4,7 @@ using UnityEngine;
 using RPG.Combat;
 using RPG.Core;
 using RPG.Movement;
+using RPG.Attributes;
 
 namespace RPG.Control {
     public class AIController : MonoBehaviour
@@ -42,7 +43,7 @@ namespace RPG.Control {
             timeSinceLastSawPlayer += Time.deltaTime;
             if (Vector3.Distance(transform.position, player.transform.position) < chaseRadius) {
                 timeSinceLastSawPlayer = 0;
-                fighter.Attack(player);
+                fighter.Attack(player.GetComponent<Health>());
             } else if (timeSinceLastAtWaypoint < dwellingTime || timeSinceLastSawPlayer < suspicionTime) {
                 actionScheduler.CancelAction();
             } else {
