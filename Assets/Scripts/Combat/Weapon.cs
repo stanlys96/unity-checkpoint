@@ -47,9 +47,9 @@ namespace RPG.Combat {
             return projectile != null;
         }
 
-        public void ShootProjectile(Transform rightHand, Transform leftHand, Health target) {
+        public void ShootProjectile(Transform rightHand, Transform leftHand, Health target, GameObject instigator) {
             WeaponProjectile projectileInstance = Instantiate(projectile, GetHandTransform(rightHand, leftHand).position, Quaternion.identity);
-            projectileInstance.SetTarget(target, weaponDamage);
+            projectileInstance.SetTarget(target, weaponDamage, instigator);
         }
 
         private void DestroyOldWeapon(Transform rightHand, Transform leftHand) {

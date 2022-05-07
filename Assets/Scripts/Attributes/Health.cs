@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using RPG.Saving;
+using RPG.Stats;
+using RPG.Core;
 
 namespace RPG.Attributes {
     public class Health : MonoBehaviour, ISaveable
     {
-        [SerializeField] float healthPoints = 100f;
+        [SerializeField] float regenerationPercentage = 80f;
 
+        float healthPoints = -1f;
         private bool isDead = false;
         Animator animator;
         NavMeshAgent navMeshAgent;
@@ -17,19 +20,41 @@ namespace RPG.Attributes {
         {
             animator = GetComponent<Animator>();
             navMeshAgent = GetComponent<NavMeshAgent>();
+            GetComponent<BaseStats>().onLevelUp += RegenerateHealth;
+            if (healthPoints < 0) {
+                healthPoints = GetComponent<BaseStats>().GetStat(Stat.Health);
+            }
         }
 
-        public void TakeDamage(float damage) {
+        public void TakeDamage(float damage, GameObject instigator) {
             healthPoints = Mathf.Max(healthPoints - damage, 0);
             if (healthPoints <= 0) {
+                AwardExperience(instigator);
                 Die();
             }
+        }
+
+        private void AwardExperience(GameObject instigator) {
+            Experience experience = instigator.GetComponent<Experience>();
+            if (experience != null) {
+                experience.GainExperience(GetComponent<BaseStats>().GetStat(Stat.ExperienceReward));
+            }
+        }
+
+        public float GetPercentage() {
+            return 100 * (healthPoints / GetComponent<BaseStats>().GetStat(Stat.Health));
+        }
+
+        private void RegenerateHealth() {
+            float healthRegen = GetComponent<BaseStats>().GetStat(Stat.Health) * (regenerationPercentage / 100);
+            healthPoints = Mathf.Max(healthPoints, healthRegen);
         }
 
         private void Die() {
             if (isDead) return;
             isDead = true;
             GetComponent<Animator>().SetTrigger("die");
+            GetComponent<ActionScheduler>().CancelAction();
             GetComponent<NavMeshAgent>().enabled = false;
             GetComponent<CapsuleCollider>().enabled = false;
         }

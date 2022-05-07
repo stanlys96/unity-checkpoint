@@ -76,12 +76,16 @@ namespace RPG.Combat {
             target = null;
         }
 
+        public Health GetTarget() {
+            return target;
+        }
+
         void Hit() {
             if (target == null) return;
             if (currentWeapon.HasProjectile()) {
-                currentWeapon.ShootProjectile(rightHandTransform, leftHandTransform, target.GetComponent<Health>());
+                currentWeapon.ShootProjectile(rightHandTransform, leftHandTransform, target.GetComponent<Health>(), gameObject);
             } else {
-                target.transform.GetComponent<Health>().TakeDamage(currentWeapon.GetWeaponDamage());
+                target.transform.GetComponent<Health>().TakeDamage(currentWeapon.GetWeaponDamage(), gameObject);
             }
         }
 
