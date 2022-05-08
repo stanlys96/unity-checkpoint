@@ -10,6 +10,7 @@ namespace RPG.Combat {
     public class Weapon : ScriptableObject {
         [SerializeField] float attackRange = 1.5f;
         [SerializeField] float weaponDamage = 5f;
+        [SerializeField] float percentageBonus = 10f;
         [SerializeField] GameObject weaponPrefab = null;
         [SerializeField] AnimatorOverrideController weaponOverride = null;
         [SerializeField] bool isRightHanded = true;
@@ -39,6 +40,10 @@ namespace RPG.Combat {
             return weaponDamage;
         }
 
+        public float GetPercentageBonus() {
+            return percentageBonus;
+        }
+
         public Transform GetHandTransform(Transform rightHand, Transform leftHand) {
             return isRightHanded ? rightHand : leftHand;
         }
@@ -47,9 +52,9 @@ namespace RPG.Combat {
             return projectile != null;
         }
 
-        public void ShootProjectile(Transform rightHand, Transform leftHand, Health target, GameObject instigator) {
+        public void ShootProjectile(Transform rightHand, Transform leftHand, Health target, GameObject instigator, float calculatedDamage) {
             WeaponProjectile projectileInstance = Instantiate(projectile, GetHandTransform(rightHand, leftHand).position, Quaternion.identity);
-            projectileInstance.SetTarget(target, weaponDamage, instigator);
+            projectileInstance.SetTarget(target, calculatedDamage, instigator);
         }
 
         private void DestroyOldWeapon(Transform rightHand, Transform leftHand) {

@@ -18,7 +18,7 @@ namespace RPG.Attributes {
         // Update is called once per frame
         void Update()
         {
-            GetComponent<Text>().text = String.Format("{0:0}%", player.GetComponent<Health>().GetPercentage());
+            GetComponent<Text>().text = String.Format("{0:0}/{1:0}", player.GetComponent<Health>().GetHealthPoints(), player.GetComponent<Health>().GetMaxHealthPoints());
         }
     }
 }

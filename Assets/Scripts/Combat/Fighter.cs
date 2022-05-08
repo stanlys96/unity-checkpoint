@@ -5,9 +5,10 @@ using RPG.Movement;
 using RPG.Core;
 using RPG.Saving;
 using RPG.Attributes;
+using RPG.Stats;
 
 namespace RPG.Combat {
-    public class Fighter : MonoBehaviour, IAction, ISaveable
+    public class Fighter : MonoBehaviour, IAction, ISaveable, IModifierProvider
     {
         [SerializeField] float timeBetweenAttacks = 1f;
         [SerializeField] float moveSpeed = 1f;
@@ -70,6 +71,18 @@ namespace RPG.Combat {
             }
         }
 
+        public IEnumerable<float> GetAdditiveModifier(Stat stat) {
+            if (stat == Stat.Damage) {
+                yield return currentWeapon.GetWeaponDamage();
+            }
+        }
+
+        public IEnumerable<float> GetPercentageModifier(Stat stat) {
+            if (stat == Stat.Damage) {
+                yield return currentWeapon.GetPercentageBonus();
+            }
+        }
+
         public void Cancel() {
             animator.ResetTrigger("attack");
             animator.SetTrigger("stopAttack");
@@ -82,10 +95,11 @@ namespace RPG.Combat {
 
         void Hit() {
             if (target == null) return;
+            float damage = GetComponent<BaseStats>().GetStat(Stat.Damage);
             if (currentWeapon.HasProjectile()) {
-                currentWeapon.ShootProjectile(rightHandTransform, leftHandTransform, target.GetComponent<Health>(), gameObject);
+                currentWeapon.ShootProjectile(rightHandTransform, leftHandTransform, target.GetComponent<Health>(), gameObject, damage);
             } else {
-                target.transform.GetComponent<Health>().TakeDamage(currentWeapon.GetWeaponDamage(), gameObject);
+                target.transform.GetComponent<Health>().TakeDamage(damage, gameObject);
             }
         }
 

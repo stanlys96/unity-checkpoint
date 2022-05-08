@@ -53,6 +53,7 @@
      <Compile Include="Assets\Asset Packs\GameDev.tv Assets\Scripts\Utils\LazyValue.cs" />
      <Compile Include="Assets\Scripts\Core\PatrolPath.cs" />
      <Compile Include="Assets\Scripts\Control\AIController.cs" />
+     <Compile Include="Assets\Scripts\Stats\IModifierProvider.cs" />
      <Compile Include="Assets\Scripts\Stats\CharacterClass.cs" />
      <Compile Include="Assets\Scripts\SceneManagement\SavingWrapper.cs" />
      <Compile Include="Assets\Scripts\Saving\SavingSystem.cs" />
