@@ -5,6 +5,7 @@ using RPG.Combat;
 using RPG.Core;
 using RPG.Movement;
 using RPG.Attributes;
+using GameDevTV.Utils;
 
 namespace RPG.Control {
     public class AIController : MonoBehaviour
@@ -17,7 +18,7 @@ namespace RPG.Control {
 
         GameObject player;
         Fighter fighter;
-        Vector3 guardPosition;
+        LazyValue<Vector3> guardPosition;
         Mover mover;
         ActionScheduler actionScheduler;
         float waypointTolerance = 0.5f;
@@ -26,13 +27,20 @@ namespace RPG.Control {
         float timeSinceLastSawPlayer = Mathf.Infinity;
 
         // Start is called before the first frame update
-        void Start()
+        void Awake()
         {
             player = GameObject.FindWithTag("Player");
             fighter = GetComponent<Fighter>();
-            guardPosition = transform.position;
             mover = GetComponent<Mover>();
             actionScheduler = GetComponent<ActionScheduler>();
+        }
+
+        private Vector3 GetGuardPosition() {
+            return transform.position;
+        }
+
+        private void Start() {
+            guardPosition.ForceInit();
         }
 
         // Update is called once per frame
@@ -57,7 +65,7 @@ namespace RPG.Control {
         }
 
         private void PatrolBehaviour() {
-            Vector3 nextPosition = guardPosition;
+            Vector3 nextPosition = guardPosition.value;
             if (patrolPath != null) {
                 if (AtWaypoint()) {
                     timeSinceLastAtWaypoint = 0;
