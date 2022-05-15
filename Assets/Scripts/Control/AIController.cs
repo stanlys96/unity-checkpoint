@@ -33,6 +33,7 @@ namespace RPG.Control {
             fighter = GetComponent<Fighter>();
             mover = GetComponent<Mover>();
             actionScheduler = GetComponent<ActionScheduler>();
+            guardPosition = new LazyValue<Vector3>(GetGuardPosition);
         }
 
         private Vector3 GetGuardPosition() {

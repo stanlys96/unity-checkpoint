@@ -49,7 +49,7 @@ namespace RPG.Combat {
             if (target == null) return;
             if (target.GetComponent<Health>().IsDead()) return;
 
-            if (Vector3.Distance(transform.position, target.transform.position) > currentWeapon.GetAttackRange()) {
+            if (Vector3.Distance(transform.position, target.transform.position) > currentWeapon.value.GetAttackRange()) {
                 mover.MoveTo(target.transform.position, moveSpeed);
             } else {
                 mover.Cancel();
